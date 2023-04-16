@@ -6,22 +6,7 @@ part of 'mood_repo.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$supabaseClientHash() => r'fc4a92addb9adb689fea195046ff28135a66aaf3';
-
-/// See also [supabaseClient].
-@ProviderFor(supabaseClient)
-final supabaseClientProvider = AutoDisposeProvider<SupabaseClient>.internal(
-  supabaseClient,
-  name: r'supabaseClientProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$supabaseClientHash,
-  dependencies: const <ProviderOrFamily>[],
-  allTransitiveDependencies: const <ProviderOrFamily>[],
-);
-
-typedef SupabaseClientRef = AutoDisposeProviderRef<SupabaseClient>;
-String _$loginWithOAuthHash() => r'ab715ad581a82464bcc308a38643fa4d335aaec6';
+String _$loginWithOAuthHash() => r'9d9dd808d2b3a08f287e24e6ef24f47acd9f1603';
 
 /// See also [loginWithOAuth].
 @ProviderFor(loginWithOAuth)
@@ -31,12 +16,12 @@ final loginWithOAuthProvider = AutoDisposeFutureProvider<bool>.internal(
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
       : _$loginWithOAuthHash,
-  dependencies: <ProviderOrFamily>[supabaseClientProvider],
-  allTransitiveDependencies: <ProviderOrFamily>[supabaseClientProvider],
+  dependencies: const <ProviderOrFamily>[],
+  allTransitiveDependencies: const <ProviderOrFamily>[],
 );
 
 typedef LoginWithOAuthRef = AutoDisposeFutureProviderRef<bool>;
-String _$userHash() => r'5bfdc350c024ab796de80ca0b11e9916ad82bbda';
+String _$userHash() => r'6c3fe04eb67d7a907892af07163eb361d6ebefdc';
 
 /// See also [user].
 @ProviderFor(user)
@@ -45,8 +30,8 @@ final userProvider = AutoDisposeProvider<User>.internal(
   name: r'userProvider',
   debugGetCreateSourceHash:
       const bool.fromEnvironment('dart.vm.product') ? null : _$userHash,
-  dependencies: <ProviderOrFamily>[supabaseClientProvider],
-  allTransitiveDependencies: <ProviderOrFamily>[supabaseClientProvider],
+  dependencies: const <ProviderOrFamily>[],
+  allTransitiveDependencies: const <ProviderOrFamily>[],
 );
 
 typedef UserRef = AutoDisposeProviderRef<User>;

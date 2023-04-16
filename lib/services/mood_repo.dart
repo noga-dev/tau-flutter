@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:tau/models/mood_dto.dart';
@@ -6,22 +7,16 @@ import 'package:tau/utils/oauth.dart';
 part 'mood_repo.g.dart';
 
 @Riverpod(dependencies: [])
-SupabaseClient supabaseClient(SupabaseClientRef ref) {
-  final supabaseClient = Supabase.instance.client;
-  return supabaseClient;
-}
-
-@Riverpod(dependencies: [supabaseClient])
 Future<bool> loginWithOAuth(LoginWithOAuthRef ref) async {
-  ref.watch(supabaseClientProvider).auth.signInWithOAuth(
-        googleOAuthProvider,
-      );
-  return true;
+  return await Supabase.instance.client.auth.signInWithOAuth(
+    googleOAuthProvider,
+    redirectTo: kIsWeb ? null : 'io.supabase.flutter://reset-callback/',
+  );
 }
 
-@Riverpod(dependencies: [supabaseClient])
+@Riverpod(dependencies: [])
 User user(UserRef ref) {
-  final user = ref.watch(supabaseClientProvider).auth.currentUser;
+  final user = Supabase.instance.client.auth.currentUser;
 
   return user ??
       const User(
@@ -37,7 +32,7 @@ User user(UserRef ref) {
 MoodRepository moodRepository(MoodRepositoryRef ref) => MoodRepository();
 
 class MoodRepository {
-  Future<List<Mood>> getAllMoods(String userId) async {
+  Future<List<MoodDto>> getAllMoods(String userId) async {
     final response = await Supabase.instance.client.rest
         .from('mood_logs')
         .select()
@@ -49,10 +44,10 @@ class MoodRepository {
     }
 
     final moods = response.data as List<dynamic>;
-    return moods.map((m) => Mood.fromMap(m)).toList();
+    return moods.map((m) => MoodDto.fromMap(m)).toList();
   }
 
-  Future<void> addMoodLog(String userId, Mood mood) async {
+  Future<void> addMoodLog(String userId, MoodDto mood) async {
     final response = await Supabase.instance.client.rest
         .from('mood_logs')
         .insert(mood.toMap()..['user_id'] = userId)

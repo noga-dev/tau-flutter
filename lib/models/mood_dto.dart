@@ -1,9 +1,9 @@
-class Mood {
+class MoodDto {
   final String id;
   final int moodValue;
   final DateTime dateTime;
 
-  Mood({required this.id, required this.moodValue, required this.dateTime});
+  MoodDto({required this.id, required this.moodValue, required this.dateTime});
 
   Map<String, dynamic> toMap() {
     return {
@@ -13,8 +13,8 @@ class Mood {
     };
   }
 
-  static Mood fromMap(Map<String, dynamic> map) {
-    return Mood(
+  static MoodDto fromMap(Map<String, dynamic> map) {
+    return MoodDto(
       id: map['id'],
       moodValue: map['mood_value'],
       dateTime: DateTime.parse(map['date_time']),

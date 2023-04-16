@@ -10,8 +10,6 @@ void main() {
     url: 'https://vobmagvouahifxtwklqo.supabase.co',
     anonKey:
         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZvYm1hZ3ZvdWFoaWZ4dHdrbHFvIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODE1ODEyNDIsImV4cCI6MTk5NzE1NzI0Mn0.y3-Or79Zl9Rf-crMMlub6JTQwHX_U5fikNsxDmCaQRQ',
-    authCallbackUrlHostname:
-        'https://vobmagvouahifxtwklqo.supabase.co/auth/v1/callback',
   );
 
   runApp(const ProviderScope(child: MyApp()));
