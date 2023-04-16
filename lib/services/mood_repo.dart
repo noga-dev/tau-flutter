@@ -9,7 +9,12 @@ part 'mood_repo.g.dart';
 Future<bool> loginWithOAuth(LoginWithOAuthRef ref) async {
   return await Supabase.instance.client.auth.signInWithOAuth(
     googleOAuthProvider,
-    // redirectTo: kIsWeb ? null : 'io.supabase.flutter://reset-callback/',
+    redirectTo: 'https://taumh.dev/auth-callback',
+    // redirectTo:
+    // kIsWeb
+    //     ? null
+    //     :
+    // 'https://vobmagvouahifxtwklqo.supabase.co/auth/v1/callback',
   );
 }
 

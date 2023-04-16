@@ -2,9 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:tau/services/router.dart';
+import 'package:url_protocol/url_protocol.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+
+  registerProtocolHandler(
+    'https://taumh.dev/auth-callback',
+    arguments: ['-url', '%s'],
+  );
 
   Supabase.initialize(
     url: 'https://vobmagvouahifxtwklqo.supabase.co',

@@ -90,6 +90,12 @@ class Win32Window {
   // Update the window frame's theme to match the system theme.
   static void UpdateTheme(HWND const window);
 
+  
+  // Dispatches link if any.
+  // This method enables our app to be with a single instance too.
+  // This is optional but mandatory if you want to catch further links in same app.
+  bool SendAppLinkToInstance(const std::wstring& title);
+
   bool quit_on_close_ = false;
 
   // window handle for top level window.
