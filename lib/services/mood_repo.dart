@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:tau/models/mood_dto.dart';
@@ -10,7 +9,7 @@ part 'mood_repo.g.dart';
 Future<bool> loginWithOAuth(LoginWithOAuthRef ref) async {
   return await Supabase.instance.client.auth.signInWithOAuth(
     googleOAuthProvider,
-    redirectTo: kIsWeb ? null : 'io.supabase.flutter://reset-callback/',
+    // redirectTo: kIsWeb ? null : 'io.supabase.flutter://reset-callback/',
   );
 }
 
