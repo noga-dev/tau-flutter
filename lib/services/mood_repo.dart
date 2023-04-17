@@ -9,7 +9,7 @@ part 'mood_repo.g.dart';
 Future<bool> loginWithOAuth(LoginWithOAuthRef ref) async {
   return await Supabase.instance.client.auth.signInWithOAuth(
     googleOAuthProvider,
-    redirectTo: 'https://taumh.dev/auth-callback',
+    redirectTo: 'taumh://login-callback',
     // redirectTo:
     // kIsWeb
     //     ? null

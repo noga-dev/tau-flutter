@@ -8,8 +8,8 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
   registerProtocolHandler(
-    'https://taumh.dev/auth-callback',
-    arguments: ['-url', '%s'],
+    'taumh://login-callback',
+    // arguments: ['-url', '%s'],
   );
 
   Supabase.initialize(
